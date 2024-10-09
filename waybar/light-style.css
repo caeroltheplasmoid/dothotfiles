@@ -1,0 +1,210 @@
+* {
+    font-family: SF Pro Text;
+    font-size: 25px;
+}
+
+window#waybar {
+    background-color: #cdcbc8; /* #e2e0dd  */
+    background: rgba(205, 203, 200, 0.85);
+    border-bottom: none;
+    color: #12120f; 
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    box-shadow: inset 0 -3px #9c9c99; /* Kanagawa Lotus main color */
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #F7F7F7; /* Kanagawa Lotus text color */
+}
+
+#workspaces button {
+    padding: 0 5px;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+#workspaces button:hover {
+    /* background: rgba(0, 0, 0, 0.2); */
+}
+
+#workspaces button.focused {
+    box-shadow: inset 0 -3px #9c9c99; /* Kanagawa Lotus text color */
+}
+
+#mode {
+    border-bottom: 3px solid #F7F7F7; /* Kanagawa Lotus text color */
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#custom-activity,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+    padding: 0 10px;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+#clock {
+    background-color: transparent;
+}
+
+
+#battery.charging, #battery.plugged {
+}
+
+#battery.critical:not(.charging) {
+    color: #F7F7F7; /* Kanagawa Lotus text color */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#disk {
+}
+
+#backlight {
+}
+
+#network {
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+    color: #2a5c45; /* Kanagawa Lotus muted text color */
+}
+
+#wireplumber {
+    color: #000000; /* Kanagawa Lotus text color */
+}
+
+#wireplumber.muted {
+}
+
+#custom-activity {
+    color: #F7F7F7; /* Kanagawa Lotus text color */
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99; /* Kanagawa Lotus Spotify color */
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000; /* Kanagawa Lotus VLC color */
+}
+
+#temperature {
+    background-color: #9c9c99; /* Kanagawa Lotus main color */
+}
+
+#temperature.critical {
+    background-color: #FFC107; /* Kanagawa Lotus warning color */
+}
+
+#tray {
+    background-color: #9c9c99; /* Kanagawa Lotus main color */
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #FFC107; /* Kanagawa Lotus warning color */
+}
+
+#idle_inhibitor {
+    background-color: #9c9c99; /* Kanagawa Lotus main color */
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1; /* Kanagawa Lotus activated color */
+    color: #2d3436; /* Kanagawa Lotus activated text color */
+}
+
+#mpd {
+    background-color: #66cc99; /* Kanagawa Lotus Spotify color */
+    color: #2a5c45; /* Kanagawa Lotus Spotify text color */
+}
+
+#mpd.disconnected {
+    background-color: #FFC107; /* Kanagawa Lotus warning color */
+}
+
+#mpd.stopped {
+    background-color: #8BC34A; /* Kanagawa Lotus muted color */
+}
+
+#mpd.paused {
+    background-color: #51a37a; /* Kanagawa Lotus paused color */
+}
+
+#language {
+    /* background: #00b093; */
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+    background-color: transparent;
+}

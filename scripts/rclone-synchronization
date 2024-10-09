@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+# 0 */5 * * * /home/astrocat/repos/dotfiles/scripts/rclone-synchronization
+
+dir_to_sync="/home/astrocat/notes"
+dir_backend="notes"
+backend="koofrenc"
+sleeptime=3600
+
+function notify() {
+  notify-send "Synchronization Progress" "Synchronizing directory $1 $2"
+}
+
+function sync() {
+    notify "$dir_to_sync" "Starting"
+    rclone -vv --transfers=16 --multi-thread-streams=8 sync "$dir_to_sync" "$backend":"$dir_backend"
+    notify "$dir_to_sync" "Finished"
+}
+
+while true; do 
+    sync
+    notify-send "Synchronization: Entering in sleep mode"
+    sleep $sleeptime 
+done

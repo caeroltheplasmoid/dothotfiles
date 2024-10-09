@@ -1,0 +1,28 @@
+[submodule "foot"]
+	path = "foot" 
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = "main"
+[submodule "gtk-3.0"]
+	path = gtk-3.0
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = gtk-3.0
+[submodule "gtk-4.0"]
+	path = gtk-4.0
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = gtk-4.0
+[submodule "swaylock"]
+	path = swaylock
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = swaylock
+[submodule "rofi"]
+	path = rofi
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = rofi
+[submodule "waybar"]
+	path = waybar
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = waybar
+[submodule "sway"]
+	path = sway
+	url = git@github.com:caeroltheplasmoid/dothotfiles.git
+	branch = sway

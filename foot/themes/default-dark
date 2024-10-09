@@ -1,0 +1,14 @@
+
+[colors]
+alpha=0.98
+
+#background = 0a1219
+#foreground = f1f5f9
+
+foreground = C9C9CA
+background = 232323
+# d4cfc7
+
+regular0=                C9C9CA
+regular1=                C9C9CA 
+regular2=                C9C9CA

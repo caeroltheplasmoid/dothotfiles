@@ -1,0 +1,27 @@
+#!/usr/bin/zsh
+
+
+source ~/repos/dotfiles/aliases.sh; 
+# Set the path to the Baloo search results
+RESULTS=$(baloosearch "$@" )
+
+# Select a file from the results using fzf
+SELECTED=$(echo "$RESULTS" | fzf --height 20 --prompt "Searching: $@ " --preview "bat {}")
+echo $SELECTED;
+
+# If a file was selected, open it in Ranger or in the file system
+if [ -n "$SELECTED" ]; then
+
+  # Check if Ranger is installed and available
+  # if command -v ranger &> /dev/null; then
+    # Open the file in Ranger
+    # ranger --select "$SELECTED"
+  # else
+  if command -v xdg-open &> /dev/null; then
+      xdg-open "$SELECTED"
+  elif command -v open &> /dev/null; then
+      open "$FILE_PATH"
+  else
+      echo "Error: unable to open file"
+  fi
+  fi

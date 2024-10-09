@@ -1,0 +1,31 @@
+
+[main]
+include=/home/astrocat/.config/foot/themes/solarized-light
+
+[colors]
+# alpha=0.98
+
+background = daddde
+foreground = 1a1a1a 
+
+# foreground = 1a1a1a
+# background = E9E4D2 
+#DADDDE
+# d4cfc7
+
+regular0=                1e1e1e
+regular1=                1e1e1e 
+regular2=                1e1e1e
+regular3=                1e1e1e
+regular4=                1a1a1a
+regular5=                1a1a1a
+regular6=                1a1a1a
+regular7=                1a1a1a
+bright0=                 1a1a1a
+bright1=                 1a1a1a
+bright2=                 1a1a1a
+bright3=                 1a1a1a
+bright4=                 1a1a1a
+bright5=                 1a1a1a
+bright6=                 1a1a1a
+bright7=                 1a1a1a

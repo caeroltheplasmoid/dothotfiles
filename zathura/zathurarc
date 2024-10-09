@@ -1,0 +1,92 @@
+" -----------------------------------------------------------------------------
+" Zathura settings
+" -----------------------------------------------------------------------------
+
+
+" Clipboard
+set selection-clipboard clipboard
+
+" Search
+set incremental-search true
+set search-hadjust true
+
+" Autoadjust
+set adjust-open width
+
+" Typography
+set font "Hack 11"
+
+" -----------------------------------------------------------------------------
+" Zathura mappings
+" -----------------------------------------------------------------------------
+
+" Select file 
+map <C-o> feedkeys ":exec ~/Documents/scripts/select_in_ranger.sh $FILE<Return>"
+
+" Zoom in/out
+map [normal]     z zoom in
+map [normal]     Z zoom out
+map [fullscreen] z zoom in
+map [fullscreen] Z zoom out
+
+" Toggle mode
+map [normal]     D toggle_page_mode
+map [fullscreen] D toggle_page_mode
+
+" Scroll
+map [normal]     u scroll half-up
+map [normal]     d scroll half-down
+map [fullscreen] u scroll half-up
+map [fullscreen] d scroll half-down
+
+" Fullscreen
+" map [normal]     f toggle_fullscreen
+" map [fullscreen] f toggle_fullscreen
+
+" Reload
+map [normal]     <C-r> reload
+map [fullscreen] <C-r> reload
+
+" Status bar
+map [normal]     b toggle_statusbar
+map [fullscreen] b toggle_statusbar
+
+" Set width as in mupdf
+map [normal]     H adjust_window best-fit
+map [normal]     W adjust_window width
+map [fullscreen] H adjust_window best-fit
+map [fullscreen] W adjust_window width
+
+map [normal]     i set recolor
+map [fullscreen] i set recolor
+
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
+
+" vim: ft=vim
+
+
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 2
+#
+# #stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+#
+set window-title-home-tilde 1
+set statusbar-home-tilde 1
+set window-title-basename 1
+set guioptions 1
+
+# # bookmarks settings
+set database "plain"
+set sandbox "none"
+map <C-b> feedkeys ":bmark "
+
+
+# set render-loading "false"
+set scroll-step 50
+
+include kanagawa 

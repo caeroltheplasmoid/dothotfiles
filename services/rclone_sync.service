@@ -1,0 +1,10 @@
+[Unit]
+Description=Rclone Synchronization Service
+
+[Service]
+ExecStart=/usr/bin/bash /home/astrocat/repos/dotfiles/scripts/rclone-synchronization
+User=astrocat
+Group=users
+
+[Install]
+WantedBy=multi-user.target
