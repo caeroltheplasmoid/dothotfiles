@@ -1,0 +1,14 @@
+
+
+* {
+    bg0:    #cdcbc8;
+    bg1:    #E5E5E5;
+    bg2:    #E5E5E5;
+    bg3:    #E5E5E5;
+    fg0:    #616161F2;
+    fg1:    #616161F2;
+    fg2:    #616161F2;
+    fg3:    #616161F2;
+}
+
+@import "rounded-common.rasi"
