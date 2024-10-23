@@ -1,0 +1,150 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "mode": "dock",
+    "hidden_state": "hide",
+    "modifier": "Mod4",
+    "ipc": true,
+
+    // hidden_state: hide,
+    // modifier: 'Mod4',
+  
+    "height": 35, // Waybar height
+    // "width": 120, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "custom/scratchpad", ],
+    "modules-center": ["clock", "custom/toggledark"],
+    "modules-right": ["hyprland/language", "inhibitor", "memory", "cpu", "disk", "pulseaudio", "backlight", "battery", "network", "tray"],
+    // Modules configuration
+
+    "custom/scratchpad": {
+        "interval": 10,
+        "return-type": "json",
+        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(select(.name == \"root\") | .nodes[] | select(.name == \"__i3\") | .nodes[] | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") }'",
+        "format": "{} ",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
+     },
+    "custom/toggledark": {
+        "interval": 5,
+        "format": "/",
+        // "exec": "~/.config/waybar/modules/toggledark.py",
+        "on-click": "~/repos/dotfiles/scripts/toggle-dark.py"
+    },
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": true,
+         "format": " {icon} ",
+         //"format":"{icon}",
+         "format-icons": {
+             // "1": "",
+             // "2": "",
+             // "3": "",
+             // "4": "4",
+             // "5": "",
+
+             "11": " <span font-size='8pt'>1</span>",
+             "12": "<span font-size='8pt'>1</span>",
+             "13": " <span font-size='8pt'>1</span>",
+             "14": "4<span font-size='8pt'>1</span>",
+             "15": "<span font-size='8pt'>1</span>",
+             "16": "6<span font-size='8pt'>1</span>",
+             "17": "7<span font-size='8pt'>1</span>",
+
+             "21": " <span font-size='8pt'>2</span>",
+             "22": "<span font-size='8pt'>2</span>",
+             "23": " <span font-size='8pt'>2</span>",
+             "24": "4<span font-size='8pt'>2</span>",
+             "25": "<span font-size='8pt'>2</span>",
+             "26": "6<span font-size='8pt'>2</span>",
+             "27": "7<span font-size='8pt'>2</span>",
+
+             "31": " <span font-size='8pt'>3</span>",
+             "32": "<span font-size='8pt'>3</span>",
+             "33": " <span font-size='8pt'>3</span>",
+             "34": "4<span font-size='8pt'>3</span>",
+             "35": "<span font-size='8pt'>3</span>",
+             "36": "6<span font-size='8pt'>3</span>",
+             "37": "7<span font-size='8pt'>3</span>",
+             // "focused": "",
+             "default": ""
+         }
+     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "inhibitor": {
+        "format": "{icon} Idle",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 25,
+        "spacing": 10
+    },
+    "clock": {
+        "format-alt": "{:%Y-%m-%d %H:%M}",
+        "format": "{:%B %d %H:%M}"
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "cpu": {
+        "format": "󰻠{usage}% "
+    },
+    "disk": {
+	      "interval": 30,
+	      "format": "{percentage_free}% ",
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureF}°"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}{percent}%",
+        "states": [0,50],
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}{capacity}% ",
+        // "format-good": "", // An empty format will hide the module
+        "format-full": "Charged",
+        "format-charging": "Charging: {capacity}%",
+        "format-icons": [" ", " ", " ", " ", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": " ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "interval" : 7
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{icon}{volume}% ",
+        "format-bluetooth": "{icon}{volume}% ",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+}
