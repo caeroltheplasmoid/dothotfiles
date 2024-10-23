@@ -1,0 +1,309 @@
+# vim:fileencoding=utf-8:ft=config:fdm=marker foldlevel=0
+
+## Variables {{{
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term foot -t xterm-256color 
+set $term_cwd $term 
+set $terminal $term
+set $menu rofi -show drun -modi filebrowser -icon-theme "Papirus" -show-icons | xargs swaymsg exec --
+set $gnome-schema org.gnome.desktop.interface
+#}}}
+
+# Settings && Visuals {{{
+xwayland enable 
+
+# smart_gaps on
+gaps inner 7
+gaps outer 7 
+gaps vertical 4
+default_border pixel 0
+default_floating_border pixel 2
+titlebar_padding 1
+titlebar_border_thickness 1
+
+font pango:SF Pro Rounded 16
+# font pango:monospace=SF Mono 17
+#Geist 17
+
+# Wallpaper
+# output * bg $HOME/Pictures/nasa/gruvbox_nasa-2W-QWAC0mzI-unsplash.jpg fill
+# output * bg $HOME/Pictures/forest/forest_blurred_4.jpg fill
+# output * bg $HOME/Pictures/Japanese/mountain-blurred-1.jpg fill
+# output * bg $HOME/Pictures/forest/forest-blurred-8.jpg fill
+
+# Just black, lol
+# output * background #1D1C19 solid_color
+
+
+# output * bg $HOME/Pictures/forest/shougan_castle-blurred.png fill #1d1c19
+# output * bg $HOME/Pictures/forest/leaves-blurred-1.jpg fill
+# output * bg $HOME/Pictures/gradient/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-pr.jpg fill
+# output * bg $HOME/Pictures/wp12637705-nordic-4k-wallpapers.png fill
+# output * bg $HOME/Pictures/blurred/forest-blurred-1008-2.jpg fill
+# output * bg $HOME/Pictures/Blurred/forest-blurred-1008.jpg fill
+# output * bg $HOME/Pictures/fluent/Fluent-mountain-morning.jpg fill
+
+# output * bg $HOME/Pictures/forest/black-and-white-forest.png fill
+# output * bg $HOME/Pictures/night-scenery-monochrome-blurred.jpg fill
+
+# gruvbox_nasa-2W-QWAC0mzI-unsplash 
+
+
+set $disp1 "eDP-1"
+set $disp2 "DP-1"
+
+# output $disp1 resolution 2560x1600 scale 1 
+# output $disp2 pos 1980 0 res 1980x1080 scale 1
+
+output $disp1 position 0 0 scale 1
+output $disp2 position 2560 0  scale 1
+
+workspace 1 output $disp2 $disp1 
+workspace 2 output $disp2 $disp1 
+workspace 3 output $disp2 $disp1 
+workspace 4 output $disp2 $disp1 
+workspace 5 output $disp2 $disp1 
+workspace 6 output $disp2 $disp1 
+workspace 7 output $disp2 $disp1 
+workspace 8 output $disp2 $disp1 
+workspace 9 output $disp1 
+
+
+# GTK Schema
+exec_always {
+  #gsettings set org.gnome.desktop.wm.preferences theme Otis 
+  gsettings set $gnome-schema icon-theme 'Qogir' 
+  gsettings set $gnome-schema font-name 'SF Pro Rounded 10' # Geist 10'
+  gsettings set $gnome-schema cursor-theme 'Adwaita'
+
+  gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'Gdk/WindowScalingFactor', <1.5>}]"
+  gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+  gsettings set org.gnome.desktop.interface scaling-factor 1.5
+  gsettings set $gnome-schema cursor-size 15 
+}
+# Mouse
+seat seat0 xcursor_theme 'Adwaita' 15 
+
+
+#}}}
+
+# I/O configuration {{{
+#
+input type:keyboard {
+    xkb_layout "us,ru"
+    xkb_variant ","
+    #xkb_options "grp:alt_shift_toggle,terminate:ctrl_alt_bksp"
+    xkb_options "grp:caps_toggle,terminate:ctrl_alt_bksp"
+    repeat_delay 300
+    repeat_rate 30
+}
+
+input type:touchpad {
+  dwt enabled
+  accel_profile adaptive
+  pointer_accel 0.25
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+}
+
+# Gestures, mouse
+bindgesture swipe:right workspace prev 
+bindgesture swipe:left workspace next
+
+#}}}
+
+# Keybindings {{{
+# Launch default term
+bindsym $mod+Return exec $term
+# Launch term within archlinux (!)
+bindsym $mod+Shift+A exec $term distrobox-enter -n arch 
+# Launch term within ubuntu (!)
+bindsym $mod+Shift+U exec $term distrobox-enter -n ubuntu  
+# Launch default term in float mod
+bindsym $mod+Shift+Return exec $term --a="float-term"
+# Kill focused window
+bindsym $mod+Shift+q kill
+# Start launcher
+bindsym $mod+d exec $menu
+# Drag windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+floating_modifier $mod normal
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Switch to workspace
+# bindsym $mod+1 workspace number 1
+# bindsym $mod+2 workspace number 2
+# bindsym $mod+3 workspace number 3
+# bindsym $mod+4 workspace number 4
+# bindsym $mod+5 workspace number 5
+# bindsym $mod+6 workspace number 6
+# bindsym $mod+7 workspace number 7
+# bindsym $mod+8 workspace number 8
+# bindsym $mod+9 workspace number 9
+# bindsym $mod+0 workspace number 10
+# Layout stuff:
+bindsym $mod+b splith
+bindsym $mod+v splitv
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+# Move focus to the parent container
+bindsym $mod+a focus parent
+# Scratchpad:
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+# Resizing containers:
+mode "resize" {
+  # left will shrink the containers width
+  bindsym $left resize shrink width 75px
+  # down will grow the containers height
+  bindsym $down resize grow height 75px
+  # up will shrink the containers height
+  bindsym $up resize shrink height 75px
+  # right will grow the containers width
+  bindsym $right resize grow width 75px
+  # Return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Control sound  
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 25-
+bindsym XF86MonBrightnessUp exec brightnessctl set 25+
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# Make screenshot 
+# bindsym $mod+Shift+p  exec grimshot --notify copy output
+bindsym $mod+Shift+p exec grimshot --notify save area - | swappy -f - && SLIGHT=$(light -G) && light -A 30 && sleep 0.1 && light -S $SLIGHT
+
+# OCR Normal
+bindsym $mod+Shift+i exec grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract "tmp.png" - | wl-copy && rm "tmp.png"
+# OCR English
+# bindsym Super+Shift+t exec grim -g "$(slurp $SLURP_ARGS)" "tmp.png" && tesseract -l eng "tmp.png" - | wl-copy && rm "tmp.png"
+
+# Run tabs-manager
+bindsym $mod+Tab exec rofi -modi combi -combi-modi window -show combi -lines 15 -show-icons -matching normal -columns 4 -m -8 -icon-theme "Papirus" -show-icons
+# bindsym $mod+Alt+e exec --no-startup-id rofi -show drun -run-shell-command 'foot -e zsh -ic "{cmd} && read"' -show-icons 
+bindsym $mod+Alt+e exec --no-startup-id  rofi -show run -p "Run: " -modi run -run-shell-command 'foot -e zsh -ic "{cmd} && read"' --icon-theme "Papirus" -show-icons -columns 2 -m 6
+# Lock screen
+bindsym $mod+x exec swaylock
+# Lock cryptofolders 
+bindsym $mod+Alt+l exec ~/repos/dotfiles/scripts/cryfs-umount-all.sh 
+bindsym $mod+Alt+u exec ~/Documents/scripts/ecryptfs-mount-private.sh 
+
+# Open firefox
+bindsym $mod+Shift+W exec GDK_DPI_SCALE=1.25 firefox
+bindsym $mod+Shift+O exec QT_SCALE_FACTOR=1.5 okular
+
+
+# }}}
+
+# Window Rules {{{
+
+for_window [title=".*"] border none
+
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] border none, floating disable, nofocus
+for_window [app_id="firefox"] border none
+for_window [class="Chromium-browser"] border none
+
+for_window [app_id="firefoxdeveloperedition" title="Firefox Developer Edition — Sharing Indicator"] border none, floating enable, nofocus
+# for_window [window_role="pop-up"] floating enable
+for_window [app_id="mpv"] border none, floating enable, resize set width 1280 height 1080, sticky enable
+for_window [app_id="imv"] border none, floating enable, resize set width 1280 height 1080, sticky enable
+
+
+for_window [title="^Picture in picture$"] \
+    floating enable, move position 877 450, sticky enable, border none
+for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+    floating enable, move position 877 450, sticky enable, border none
+for_window [window_role = "pop-up"] floating enable, border none
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
+for_window [app_id = "float-kitty"] floating enable, resize set width 1280 height 1080 
+for_window [app_id = "float-term"] floating enable, resize set width 1000 height 1280, border none, opacity 1
+
+# opacity 
+set $opacity 0.99
+
+for_window [class = ".*"] opacity $opacity
+for_window [app_id = ".*"] opacity $opacity
+for_window [class = "obsidian*"] opacity 1
+for_window [app_id = "obsidian*"] opacity 0.99 
+for_window [app_id = "firefox"] opacity 1 
+for_window [app_id = "foot"] border none, opacity 0.99 
+
+
+for_window [app_id="virt*"] opacity 0.98
+for_window [class="Code"] opacity 0.98
+
+
+# }}}
+
+# Status Bar {{{
+bar {
+  swaybar_command waybar
+}
+# }}}:
+
+
+# Exec {{{
+include /etc/sway/config.d/*
+include $HOME/.config/sway/config.d/*.conf
+include $HOME/.config/sway/colors/current-theme.conf
+# include $HOME/.cache/wal/colors-sway
+
+# Status bar 
+# exec nwg-panel
+
+# Lock & Sleep
+exec swayidle -w \
+  timeout 1000 'swaylock -f' \
+  timeout 1000 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  timeout 1500 'systemctl suspend' \
+  before-sleep 'swaylock -f'
+
+exec mako
+exec nm-applet
+# Red light, night gamma
+exec wlsunset -l 53.9 -L 27.56
+# exec ~/Documents/scripts/monitor-connections-networkmanager.sh
+# }}}
