@@ -62,19 +62,18 @@ def change_rofi_colors(conf_file: str, style_file: str):
 
 
 if (CURRENT_COLOR_SCHEME == "'prefer-light'"):
-    
     change_sway_colors(SWAY_CURRENT_COLOR_CONF, SWAY_DARK_COLOR_CONF)
     change_waybar_colors(WAYBAR_COLOR_CONF, WAYBAR_REL_DARK_CONF)
     os.popen(r""" dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-dark'" """)
     os.popen(r""" dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'" """)
-    change_foot_colors(FOOT_COLOR_CONF, FOOT_LIGHT_THEME, FOOT_DARK_THEME)
+    # change_foot_colors(FOOT_COLOR_CONF, FOOT_LIGHT_THEME, FOOT_DARK_THEME)
     change_rofi_colors(ROFI_COLOR_CONF, ROFI_DARK_THEME)
 else:
     change_sway_colors(SWAY_CURRENT_COLOR_CONF, SWAY_LIGHT_COLOR_CONF)
     change_waybar_colors(WAYBAR_COLOR_CONF, WAYBAR_REL_LIGHT_CONF)
     os.popen(r"""dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-white'" """)
     os.popen(r"""dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'" """)
-    change_foot_colors(FOOT_COLOR_CONF, FOOT_DARK_THEME, FOOT_LIGHT_THEME)
+    # change_foot_colors(FOOT_COLOR_CONF, FOOT_DARK_THEME, FOOT_LIGHT_THEME)
     change_rofi_colors(ROFI_COLOR_CONF, ROFI_LIGHT_THEME)
 
 
