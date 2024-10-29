@@ -3,7 +3,7 @@
 # Specify the .config folders to create submodules for
 CONFIG_FOLDERS=( "/home/astrocat/.config/gtk-4.0" "/home/astrocat/.config/sway" "/home/astrocat/.config/swaylock" "/home/astrocat/.config/rofi" "/home/astrocat/.config/waybar" "/home/astrocat/repos/dotfiles/home")
 
-REMOTE_REPO_URL="git@github.com:caeroltheplasmoid/dothotfiles.git"
+REMOTE_REPO_URL="git@github.com:caerry/dothotfiles.git"
 DATE_TIME=$(date +"%Y-%m-%d_%H-%M-%S")
 CURRENT_DIR=$(pwd)
 
